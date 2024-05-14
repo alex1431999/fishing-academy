@@ -1,11 +1,11 @@
 <template>
-    <v-card max-width="400">
+    <v-card width="400">
         <v-card-text>
-            <div>
+            <div class="mb-2">
                 {{ question.description }}
             </div>
 
-            <Choice v-for="choice in question.choices" :choice="choice"></Choice>
+            <Choice class="mb-2" v-for="choice in question.choices" :choice="choice"></Choice>
         </v-card-text>
     </v-card>
 </template>

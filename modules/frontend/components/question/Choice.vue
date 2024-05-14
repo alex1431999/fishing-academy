@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-btn>{{ choice.description }}</v-btn>
+        <v-btn class="text-none">{{ choice.description }}</v-btn>
     </div>
 </template>
 
