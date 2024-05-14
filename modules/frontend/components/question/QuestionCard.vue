@@ -15,9 +15,19 @@
             ></Choice>
 
             <v-card-actions>
-                <v-btn :disabled="!choiceSelected" @click="refresh" icon>
-                    <v-icon>mdi-refresh</v-icon>
-                </v-btn>
+                <div class="actions d-flex justify-space-between">
+                    <v-btn icon>
+                        <v-icon>mdi-arrow-left</v-icon>
+                    </v-btn>
+
+                    <v-btn :disabled="!choiceSelected" @click="refresh" icon>
+                        <v-icon>mdi-refresh</v-icon>
+                    </v-btn>
+
+                    <v-btn icon>
+                        <v-icon>mdi-arrow-right</v-icon>
+                    </v-btn>
+                </div>
             </v-card-actions>
         </v-card-text>
     </v-card>
@@ -40,3 +50,9 @@ function refresh() {
     choiceSelected.value = undefined
 }
 </script>
+
+<style scoped>
+.actions {
+    width: 100%;
+}
+</style>
