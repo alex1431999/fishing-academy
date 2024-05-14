@@ -1,0 +1,12 @@
+{
+  "name": "fishing-academy",
+  "version": "1.0.0",
+  "repository": "git@github.com:alex1431999/fishing-academy.git",
+  "author": "alex1431999 <alexhaller99@yahoo.de>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "modules/*"
+  ],
+  "packageManager": "yarn@4.2.2"
+}
