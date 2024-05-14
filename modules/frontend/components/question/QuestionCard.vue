@@ -13,6 +13,12 @@
                 :is-answer="choice.id === question.answer.id"
                 @selected="select(choice)"
             ></Choice>
+
+            <v-card-actions>
+                <v-btn :disabled="!choiceSelected" @click="refresh" icon>
+                    <v-icon>mdi-refresh</v-icon>
+                </v-btn>
+            </v-card-actions>
         </v-card-text>
     </v-card>
 </template>
@@ -28,5 +34,9 @@ const choiceSelected = ref<ChoiceType | undefined>()
 
 function select(choice: ChoiceType) {
     choiceSelected.value = choice
+}
+
+function refresh() {
+    choiceSelected.value = undefined
 }
 </script>
