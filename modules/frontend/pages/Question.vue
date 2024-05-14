@@ -8,7 +8,7 @@
 import type {Question, Choice} from 'fishing-academy-types'
 
 const sampleChoices: Choice[] = [{id: '1', description: 'ja'}, {id: '2', description: 'nein'}, {
-    id: '2',
+    id: '3',
     description: 'nur an einem Sonntag'
 }]
 const sampleQuestion: Question = {
