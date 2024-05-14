@@ -3724,11 +3724,18 @@ __metadata:
   resolution: "fishing-academy-frontend@workspace:modules/frontend"
   dependencies:
     "@mdi/font": "npm:^7.4.47"
+    fishing-academy-types: "npm:1.0.0"
     nuxt: "npm:^3.11.2"
     vite-plugin-vuetify: "npm:^2.0.3"
     vue: "npm:^3.4.27"
     vue-router: "npm:^4.3.2"
     vuetify: "npm:^3.6.6"
+  languageName: unknown
+  linkType: soft
+
+"fishing-academy-types@npm:1.0.0, fishing-academy-types@workspace:modules/types":
+  version: 0.0.0-use.local
+  resolution: "fishing-academy-types@workspace:modules/types"
   languageName: unknown
   linkType: soft
 

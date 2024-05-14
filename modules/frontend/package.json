@@ -16,5 +16,8 @@
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
     "vuetify": "^3.6.6"
+  },
+  "devDependencies": {
+    "fishing-academy-types": "1.0.0"
   }
 }
