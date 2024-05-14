@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-center">
+    <div class="question d-flex justify-center">
         <QuestionCard :question="sampleQuestion"></QuestionCard>
     </div>
 </template>
@@ -18,3 +18,10 @@ const sampleQuestion: Question = {
     description: 'Ist nali ein Dorsch?'
 }
 </script>
+
+<style>
+.question {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+</style>
