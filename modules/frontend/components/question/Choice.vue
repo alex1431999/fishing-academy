@@ -1,5 +1,7 @@
 <template>
-    <v-btn>{{ choice.description }}</v-btn>
+    <div>
+        <v-btn>{{ choice.description }}</v-btn>
+    </div>
 </template>
 
 <script setup lang="ts">
