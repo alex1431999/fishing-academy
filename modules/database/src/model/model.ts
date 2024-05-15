@@ -1,0 +1,15 @@
+import {supabase} from "../../client";
+
+export abstract class Model<ModelType> {
+    abstract tableName: string
+
+    public async get(id: string): Promise<ModelType> {
+        const {data} = await supabase.from(this.tableName).select('*').eq('id', id).single()
+        return data
+    }
+
+    public async getAll(): Promise<ModelType[]> {
+        const {data} = await supabase.from(this.tableName).select('*')
+        return data
+    }
+}
