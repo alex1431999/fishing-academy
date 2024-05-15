@@ -2,6 +2,7 @@
     <div class="question d-flex justify-center">
         <QuestionCard
             :question="questionSelected"
+            :choices="choicesForQuestion"
             :has-previous-question="hasPreviousQuestion"
             :has-next-question="hasNextQuestion"
             @previous-question="onPreviousQuestion"
@@ -11,13 +12,21 @@
 </template>
 
 <script setup lang="ts">
-import {questionsMockData} from "~/mock/questions";
+import {questionModel} from 'fishing-academy-database/src/model/models/question'
+import {choiceModel} from 'fishing-academy-database/src/model/models/choice'
 
-const questions = questionsMockData
+const questions = await questionModel.getAll()
+const choices = await choiceModel.getAll()
+
+
 let questionIndex = ref<number>(0)
 
 const questionSelected = computed(() => {
     return questions[questionIndex.value]
+})
+
+const choicesForQuestion = computed(() => {
+    return choices.filter(choice => choice.question === questionSelected.value.id)
 })
 
 const hasPreviousQuestion = computed(() => {

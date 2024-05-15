@@ -8,7 +8,7 @@
             </div>
             <Choice
                 class="mb-4"
-                v-for="choice in question.choices"
+                v-for="choice in choices"
                 :choice="choice"
                 :choice-selected="choiceSelected"
                 :is-answer="choice.id === question.answer"
@@ -42,11 +42,12 @@ import type {VBtn} from "vuetify/components";
 
 const props = defineProps<{
     question: Question,
+    choices: ChoiceType[],
     hasPreviousQuestion: boolean,
     hasNextQuestion: boolean
 }>()
 
-const {question, hasPreviousQuestion, hasNextQuestion} = toRefs(props)
+const {question, choices, hasPreviousQuestion, hasNextQuestion} = toRefs(props)
 
 const nextButton = ref<InstanceType<typeof VBtn> | null>(null)
 
