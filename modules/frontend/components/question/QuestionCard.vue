@@ -1,8 +1,8 @@
 <template>
     <v-card rounded width="600">
         <v-card-text>
-            <div class="mb-4 d-flex justify-center">
-                <h2>
+            <div class="description d-flex justify-center">
+                <h2 class="description__header">
                     {{ question.description }}
                 </h2>
             </div>
@@ -81,6 +81,15 @@ function refresh() {
 </script>
 
 <style scoped>
+.description {
+    height: 100px;
+}
+
+.description__header {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .actions {
     width: 100%;
 }
