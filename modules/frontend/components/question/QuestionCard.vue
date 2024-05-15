@@ -16,7 +16,7 @@
 
             <v-card-actions>
                 <div class="actions d-flex justify-space-between">
-                    <v-btn icon @click="$emit('previous-question')">
+                    <v-btn icon :disabled="!hasPreviousQuestion" @click="$emit('previous-question')">
                         <v-icon>mdi-arrow-left</v-icon>
                     </v-btn>
 
@@ -24,7 +24,7 @@
                         <v-icon>mdi-refresh</v-icon>
                     </v-btn>
 
-                    <v-btn icon @click="$emit('next-question')">
+                    <v-btn icon :disabled="!hasNextQuestion" @click="$emit('next-question')">
                         <v-icon>mdi-arrow-right</v-icon>
                     </v-btn>
                 </div>
@@ -37,7 +37,11 @@
 import type {Question, Choice as ChoiceType} from 'fishing-academy-types'
 import Choice from "~/components/question/Choice.vue";
 
-const {question} = defineProps<{ question: Question }>()
+const {question, hasPreviousQuestion, hasNextQuestion} = defineProps<{
+    question: Question,
+    hasPreviousQuestion: boolean,
+    hasNextQuestion: boolean
+}>()
 
 
 const choiceSelected = ref<ChoiceType | undefined>()
