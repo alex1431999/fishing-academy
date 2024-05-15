@@ -10,13 +10,13 @@
                 v-for="choice in question.choices"
                 :choice="choice"
                 :choice-selected="choiceSelected"
-                :is-answer="choice.id === question.answer.id"
+                :is-answer="choice.id === question.answer"
                 @selected="select(choice)"
             ></Choice>
 
             <v-card-actions>
                 <div class="actions d-flex justify-space-between">
-                    <v-btn icon>
+                    <v-btn icon @click="$emit('previous-question')">
                         <v-icon>mdi-arrow-left</v-icon>
                     </v-btn>
 
@@ -24,7 +24,7 @@
                         <v-icon>mdi-refresh</v-icon>
                     </v-btn>
 
-                    <v-btn icon>
+                    <v-btn icon @click="$emit('next-question')">
                         <v-icon>mdi-arrow-right</v-icon>
                     </v-btn>
                 </div>

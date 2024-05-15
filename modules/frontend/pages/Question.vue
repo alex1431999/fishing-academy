@@ -1,21 +1,30 @@
 <template>
     <div class="question d-flex justify-center">
-        <QuestionCard :question="sampleQuestion"></QuestionCard>
+        <QuestionCard :question="questionSelected" @previous-question="onPreviousQuestion"
+                      @next-question="onNextQuestion"></QuestionCard>
     </div>
 </template>
 
 <script setup lang="ts">
-import type {Question, Choice} from 'fishing-academy-types'
+import {questionsMockData} from "~/mock/questions";
 
-const sampleChoices: Choice[] = [{id: '1', description: 'ja'}, {id: '2', description: 'nein'}, {
-    id: '3',
-    description: 'nur an einem Sonntag'
-}]
-const sampleQuestion: Question = {
-    id: 'test',
-    choices: sampleChoices,
-    answer: sampleChoices[0],
-    description: 'Ist nali ein Dorsch?'
+const questions = questionsMockData
+let questionIndex = ref<number>(0)
+
+const questionSelected = computed(() => {
+    return questions[questionIndex.value]
+})
+
+function onPreviousQuestion() {
+    if (questionIndex.value > 0) {
+        questionIndex.value -= 1
+    }
+}
+
+function onNextQuestion() {
+    if (questionIndex.value < questions.length - 1) {
+        questionIndex.value += 1
+    }
 }
 </script>
 
