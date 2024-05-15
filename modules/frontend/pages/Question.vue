@@ -15,9 +15,10 @@
 import {questionModel} from 'fishing-academy-database/src/model/models/question'
 import {choiceModel} from 'fishing-academy-database/src/model/models/choice'
 
+// TODO at the moment we are fetching all questions and all choices, we probably want to filter
+// this down in the future to not load too much data into the frontend
 const questions = await questionModel.getAll()
 const choices = await choiceModel.getAll()
-
 
 let questionIndex = ref<number>(0)
 
