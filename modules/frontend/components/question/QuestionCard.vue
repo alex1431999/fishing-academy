@@ -1,5 +1,5 @@
 <template>
-    <v-card width="400">
+    <v-card rounded width="400">
         <v-card-text>
             <div class="mb-4 d-flex justify-center">
                 <h2>
