@@ -37,14 +37,20 @@
 import type {Question, Choice as ChoiceType} from 'fishing-academy-types'
 import Choice from "~/components/question/Choice.vue";
 
-const {question, hasPreviousQuestion, hasNextQuestion} = defineProps<{
+const props = defineProps<{
     question: Question,
     hasPreviousQuestion: boolean,
     hasNextQuestion: boolean
 }>()
 
+const {question, hasPreviousQuestion, hasNextQuestion} = toRefs(props)
+
 
 const choiceSelected = ref<ChoiceType | undefined>()
+
+watch(question, () => {
+    choiceSelected.value = undefined
+})
 
 function select(choice: ChoiceType) {
     choiceSelected.value = choice
