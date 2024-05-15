@@ -1,10 +1,11 @@
 <template>
     <v-card width="400">
         <v-card-text>
-            <h3 class="mb-4">
-                {{ question.description }}
-            </h3>
-
+            <div class="mb-4 d-flex justify-center">
+                <h2>
+                    {{ question.description }}
+                </h2>
+            </div>
             <Choice
                 class="mb-4"
                 v-for="choice in question.choices"
