@@ -25,7 +25,8 @@
                         <v-icon>mdi-refresh</v-icon>
                     </v-btn>
 
-                    <v-btn icon :disabled="!hasNextQuestion" @click="$emit('next-question')">
+                    <v-btn icon ref="nextButton" :disabled="!hasNextQuestion" :color="nextColor"
+                           @click="$emit('next-question')">
                         <v-icon>mdi-arrow-right</v-icon>
                     </v-btn>
                 </div>
@@ -37,6 +38,7 @@
 <script setup lang="ts">
 import type {Question, Choice as ChoiceType} from 'fishing-academy-types'
 import Choice from "~/components/question/Choice.vue";
+import type {VBtn} from "vuetify/components";
 
 const props = defineProps<{
     question: Question,
@@ -46,8 +48,23 @@ const props = defineProps<{
 
 const {question, hasPreviousQuestion, hasNextQuestion} = toRefs(props)
 
+const nextButton = ref<InstanceType<typeof VBtn> | null>(null)
 
 const choiceSelected = ref<ChoiceType | undefined>()
+
+const answeredCorrectly = computed(() => {
+    return choiceSelected?.value?.id === question.value.answer
+})
+
+const nextColor = computed(() => {
+    return answeredCorrectly.value ? 'success' : ''
+})
+
+watch(answeredCorrectly, () => {
+    if (nextButton.value) {
+        nextButton.value.$el.focus()
+    }
+})
 
 watch(question, () => {
     choiceSelected.value = undefined
