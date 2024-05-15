@@ -2,9 +2,9 @@
     <v-card rounded width="600">
         <v-card-text>
             <div class="description d-flex justify-center">
-                <h2 class="description__header">
+                <h3 class="description__header">
                     {{ question.description }}
-                </h2>
+                </h3>
             </div>
             <Choice
                 class="mb-4"
