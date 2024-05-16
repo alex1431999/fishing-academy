@@ -27,7 +27,7 @@ const questionSelected = computed(() => {
 })
 
 const choicesForQuestion = computed(() => {
-    return choices.filter(choice => choice.question === questionSelected.value.id)
+    return choices.filter(choice => choice.questionId === questionSelected.value.id)
 })
 
 const hasPreviousQuestion = computed(() => {
