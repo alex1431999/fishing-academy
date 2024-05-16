@@ -12,7 +12,7 @@ export abstract class StorageModel extends Model<StorageData> {
 
     async getAll(): Promise<StorageData[]> {
         const {data} = await supabase.storage.from(this.bucketName).list()
-        return Promise.all(data.map(fileObject => this.get(fileObject.id)))
+        return Promise.all((data || []).map(fileObject => this.get(fileObject.id)))
     }
 
     async getUrl(id: string): Promise<string> {
