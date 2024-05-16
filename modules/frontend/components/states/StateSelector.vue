@@ -1,5 +1,7 @@
 <template>
-    <State v-for="state in states" :key="state.id" :state="state"></State>
+    <div class="d-flex ga-10">
+        <State v-for="state in states" :key="state.id" :state="state"></State>
+    </div>
 </template>
 
 <script setup lang="ts">
