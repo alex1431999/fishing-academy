@@ -1,6 +1,6 @@
 <template>
     <v-card @click="$emit('selected')" elevation="2" width="200" height="170">
-        <v-card-title class="name">
+        <v-card-title>
             {{ state.name }}
         </v-card-title>
         <v-card-text>
@@ -19,10 +19,6 @@ const flagUrl = await stateFlagModel.getUrl(state.flagId)
 </script>
 
 <style scoped>
-.name {
-    color: #0074d9
-}
-
 .stateFlag {
     max-width: 100%;
     max-height: 100%;
