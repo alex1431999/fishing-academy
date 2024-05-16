@@ -1,7 +1,7 @@
-import {Model} from "../model";
 import type {State} from 'fishing-academy-types'
+import {DatabaseModel} from "../model.database";
 
-export class StateModel extends Model<State> {
+export class StateModel extends DatabaseModel<State> {
     tableName = 'states'
 }
 
