@@ -20,7 +20,7 @@ const flagUrl = await stateFlagModel.getUrl(state.flagId)
 
 <style scoped>
 .name {
-    color: #FE7833
+    color: #0074d9
 }
 
 .stateFlag {
