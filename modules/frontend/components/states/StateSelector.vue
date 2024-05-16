@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-text-field
+            class="ml-auto"
             variant="outlined"
             width="400"
             prepend-inner-icon="mdi-magnify"
