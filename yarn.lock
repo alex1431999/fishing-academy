@@ -1864,6 +1864,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4":
+  version: 4.17.1
+  resolution: "@types/lodash@npm:4.17.1"
+  checksum: 10c0/af2ad8a3c8d7deb170a7ec6e18afc5ae8980576e5f7fe798d8a95a1df7222c15bdf967a25a35879f575a3b64743de00145710ee461a0051e055e94e4fe253f45
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 20.12.12
   resolution: "@types/node@npm:20.12.12"
@@ -3817,8 +3824,10 @@ __metadata:
   resolution: "fishing-academy-frontend@workspace:modules/frontend"
   dependencies:
     "@mdi/font": "npm:^7.4.47"
+    "@types/lodash": "npm:^4"
     fishing-academy-database: "npm:1.0.0"
     fishing-academy-types: "npm:1.0.0"
+    lodash: "npm:^4.17.21"
     nuxt: "npm:^3.11.2"
     vite-plugin-vuetify: "npm:^2.0.3"
     vue: "npm:^3.4.27"
@@ -3838,6 +3847,7 @@ __metadata:
   resolution: "fishing-academy@workspace:."
   dependencies:
     "@supabase/supabase-js": "npm:^2.43.2"
+    lodash: "npm:^4.17.21"
   languageName: unknown
   linkType: soft
 
@@ -4862,7 +4872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15":
+"lodash@npm:^4.17.15, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c

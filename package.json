@@ -10,6 +10,7 @@
   ],
   "packageManager": "yarn@4.2.2",
   "dependencies": {
-    "@supabase/supabase-js": "^2.43.2"
+    "@supabase/supabase-js": "^2.43.2",
+    "lodash": "^4.17.21"
   }
 }
