@@ -14,11 +14,11 @@ type Status = 'correct' | 'false' | 'pending' | 'done'
 
 const props = defineProps<{
     choice: Choice,
-    isAnswer: boolean,
+    isCorrectChoice: boolean,
     choiceSelected?: Choice
 }>();
 
-const {choice, isAnswer, choiceSelected} = toRefs(props);
+const {choice, isCorrectChoice, choiceSelected} = toRefs(props);
 
 const colorMap: Record<Status, string> = {
     correct: 'success',
@@ -35,12 +35,12 @@ const status = computed<Status>(() => {
         return 'pending';
     }
 
-    if (isAnswer.value) {
+    if (isCorrectChoice.value) {
         return 'correct'
     }
 
     if (choiceSelected.value.id === choice.value.id) {
-        if (!isAnswer.value) {
+        if (!isCorrectChoice.value) {
             return 'false'
         }
     }

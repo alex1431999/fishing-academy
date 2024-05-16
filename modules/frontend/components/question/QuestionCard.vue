@@ -11,7 +11,7 @@
                 v-for="choice in choices"
                 :choice="choice"
                 :choice-selected="choiceSelected"
-                :is-answer="choice.id === question.answer"
+                :is-correct-choice="choice.id === question.correctChoiceId"
                 @selected="select(choice)"
             ></Choice>
 
@@ -53,15 +53,15 @@ const nextButton = ref<InstanceType<typeof VBtn> | null>(null)
 
 const choiceSelected = ref<ChoiceType | undefined>()
 
-const answeredCorrectly = computed(() => {
-    return choiceSelected?.value?.id === question.value.answer
+const correctChoiceSelected = computed(() => {
+    return choiceSelected?.value?.id === question.value.correctChoiceId
 })
 
 const nextColor = computed(() => {
-    return answeredCorrectly.value ? 'success' : ''
+    return correctChoiceSelected.value ? 'success' : ''
 })
 
-watch(answeredCorrectly, () => {
+watch(correctChoiceSelected, () => {
     if (nextButton.value) {
         nextButton.value.$el.focus()
     }
