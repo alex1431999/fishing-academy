@@ -6,7 +6,7 @@
             width="400"
             prepend-inner-icon="mdi-magnify"
             placeholder="Suchen..."
-            base-color="#0074d9"
+            color="#0074d9"
             @input="filterKey = $event.target.value">
         </v-text-field>
     </div>
