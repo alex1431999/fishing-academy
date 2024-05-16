@@ -1,5 +1,5 @@
 <template>
-    <State v-for="state in states" :state="state"></State>
+    <State v-for="state in states" :key="state.id" :state="state"></State>
 </template>
 
 <script setup lang="ts">

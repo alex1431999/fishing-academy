@@ -1,5 +1,5 @@
 <template>
-    {{ state }}
+    {{ state.id }}
 </template>
 
 <script setup lang="ts">
