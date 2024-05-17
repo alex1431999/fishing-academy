@@ -13,12 +13,27 @@ import AppHeader from "~/components/header/AppHeader.vue";
 import {supabase, userSettingsModel} from 'fishing-academy-database'
 
 onMounted(async () => {
-    const {data: {user}} = await supabase.auth.signInAnonymously()
-    const userId = user?.id
+    // Check if there is an existing session
+    const {data: {session}} = await supabase.auth.getSession()
 
-    if (!userId) throw new Error('anonymous sign in has failed')
+    let userId
 
-    await userSettingsModel.create({userId})
+    if (session) {
+        // If session exists, get the user ID from the session
+        userId = session.user.id
+    } else {
+        // If no session, sign in anonymously
+        const {data: {user}, error} = await supabase.auth.signInAnonymously()
+
+        if (error || !user) {
+            throw new Error('Anonymous sign-in has failed')
+        }
+
+        userId = user.id
+    }
+
+    // Use the userId for your logic
+    await userSettingsModel.createIfDoesntExist({userId})
 })
 </script>
 
