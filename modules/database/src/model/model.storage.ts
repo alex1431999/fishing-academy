@@ -18,4 +18,8 @@ export abstract class StorageModel extends Model<StorageData> {
     async getUrl(id: string): Promise<string> {
         return supabase.storage.from(this.bucketName).getPublicUrl(id).data.publicUrl
     }
+
+    create(data: Omit<StorageData, "id">): Promise<StorageData> {
+        throw new Error('not implemented yet')
+    }
 }

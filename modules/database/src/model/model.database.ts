@@ -13,4 +13,10 @@ export abstract class DatabaseModel<ModelType> extends Model<ModelType> {
         const {data} = await supabase.from(this.tableName).select('*')
         return data || []
     }
+
+    public async create(data: Omit<ModelType, "id">): Promise<ModelType> {
+        const {data: dataCreated} = await supabase.from(this.tableName).insert(data).select()
+        const [rowInserted] = dataCreated || []
+        return rowInserted
+    }
 }

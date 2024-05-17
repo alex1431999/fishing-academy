@@ -10,10 +10,15 @@
 </template>
 <script setup lang="ts">
 import AppHeader from "~/components/header/AppHeader.vue";
-import {supabase} from 'fishing-academy-database'
+import {supabase, userSettingsModel} from 'fishing-academy-database'
 
 onMounted(async () => {
-    await supabase.auth.signInAnonymously()
+    const {data: {user}} = await supabase.auth.signInAnonymously()
+    const userId = user?.id
+
+    if (!userId) throw new Error('anonymous sign in has failed')
+
+    await userSettingsModel.create({userId})
 })
 </script>
 
