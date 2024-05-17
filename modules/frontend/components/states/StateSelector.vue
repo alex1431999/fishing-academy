@@ -11,7 +11,12 @@
         </v-text-field>
     </div>
     <div class="d-flex ga-10">
-        <State v-for="state in statesFiltered" :key="state.id" :state="state"></State>
+        <State
+            v-for="state in statesFiltered"
+            :key="state.id"
+            :state="state"
+            @selected="$emit('selected', state)">
+        </State>
     </div>
 </template>
 
@@ -22,6 +27,8 @@ import _ from 'lodash'
 import {colorPrimary} from "~/constants/colors";
 
 const {states} = defineProps<{ states: StateType[] }>()
+
+const emit = defineEmits(['selected'])
 
 const filterKey = ref<string>('')
 
