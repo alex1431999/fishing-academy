@@ -6,7 +6,7 @@
             width="400"
             prepend-inner-icon="mdi-magnify"
             placeholder="Suchen..."
-            color="#0074d9"
+            :color="colorPrimary"
             @input="filterKey = $event.target.value">
         </v-text-field>
     </div>
@@ -19,6 +19,7 @@
 import type {State as StateType} from 'fishing-academy-types'
 import State from "~/components/states/State.vue";
 import _ from 'lodash'
+import {colorPrimary} from "~/constants/colors";
 
 const {states} = defineProps<{ states: StateType[] }>()
 
