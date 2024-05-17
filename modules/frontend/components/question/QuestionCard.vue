@@ -17,11 +17,12 @@
 
             <v-card-actions>
                 <div class="actions d-flex justify-space-between">
-                    <v-btn icon :disabled="!hasPreviousQuestion" @click="$emit('previous-question')">
+                    <v-btn icon :disabled="!hasPreviousQuestion" :color="colorPrimary"
+                           @click="$emit('previous-question')">
                         <v-icon>mdi-arrow-left</v-icon>
                     </v-btn>
 
-                    <v-btn :disabled="!choiceSelected" @click="refresh" icon>
+                    <v-btn :disabled="!choiceSelected" :color="colorPrimary" @click="refresh" icon>
                         <v-icon>mdi-refresh</v-icon>
                     </v-btn>
 
@@ -39,6 +40,7 @@
 import type {Question, Choice as ChoiceType} from 'fishing-academy-types'
 import Choice from "~/components/question/Choice.vue";
 import type {VBtn} from "vuetify/components";
+import {colorPrimary} from "~/constants/colors";
 
 const props = defineProps<{
     question: Question,
@@ -58,7 +60,7 @@ const correctChoiceSelected = computed(() => {
 })
 
 const nextColor = computed(() => {
-    return correctChoiceSelected.value ? 'success' : ''
+    return correctChoiceSelected.value ? 'success' : colorPrimary
 })
 
 watch(correctChoiceSelected, () => {
