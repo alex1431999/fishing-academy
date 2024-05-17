@@ -12,6 +12,7 @@
 import AppHeader from "~/components/header/AppHeader.vue";
 import {supabase, userSettingsModel} from 'fishing-academy-database'
 
+// TODO move this logic out of this file, maybe into a workflow?
 onMounted(async () => {
     // Check if there is an existing session
     const {data: {session}} = await supabase.auth.getSession()
