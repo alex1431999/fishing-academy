@@ -5,21 +5,25 @@ import {supabase} from "../../client";
 export abstract class StorageModel extends Model<StorageData> {
     abstract bucketName: string
 
-    async get(id: string): Promise<StorageData> {
+    public async get(id: string): Promise<StorageData> {
         const response = await supabase.storage.from(this.bucketName).download(id)
         return response.data
     }
 
-    async getAll(): Promise<StorageData[]> {
+    public async getAll(): Promise<StorageData[]> {
         const {data} = await supabase.storage.from(this.bucketName).list()
         return Promise.all((data || []).map(fileObject => this.get(fileObject.id)))
     }
 
-    async getUrl(id: string): Promise<string> {
+    public async getUrl(id: string): Promise<string> {
         return supabase.storage.from(this.bucketName).getPublicUrl(id).data.publicUrl
     }
 
-    create(data: Omit<StorageData, "id">): Promise<StorageData> {
+    public create(data: Omit<StorageData, "id">): Promise<StorageData> {
+        throw new Error('not implemented yet')
+    }
+
+    public update(data: Partial<StorageData>): Promise<void> {
         throw new Error('not implemented yet')
     }
 }

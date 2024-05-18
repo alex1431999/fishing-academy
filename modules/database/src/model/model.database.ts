@@ -19,4 +19,8 @@ export abstract class DatabaseModel<ModelType> extends Model<ModelType> {
         const [rowInserted] = dataCreated || []
         return rowInserted
     }
+
+    public async update(data: Partial<ModelType>): Promise<void> {
+        await supabase.from(this.tableName).update(data)
+    }
 }
