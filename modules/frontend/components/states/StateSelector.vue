@@ -15,6 +15,7 @@
             v-for="state in statesFiltered"
             :key="state.id"
             :state="state"
+            :is-selected="stateSelected?.id === state.id"
             @selected="$emit('selected', state)">
         </State>
     </div>
@@ -26,7 +27,7 @@ import State from "~/components/states/State.vue";
 import _ from 'lodash'
 import {colorPrimary} from "~/constants/colors";
 
-const {states} = defineProps<{ states: StateType[] }>()
+const {states} = defineProps<{ states: StateType[], stateSelected: StateType | null }>()
 
 const emit = defineEmits(['selected'])
 
