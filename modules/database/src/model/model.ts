@@ -5,5 +5,5 @@ export abstract class Model<ModelType> {
 
     public abstract create(data: Omit<ModelType, 'id'>): Promise<ModelType>
 
-    public abstract update(data: Partial<ModelType>): Promise<void>
+    public abstract update(id: string, data: Partial<Omit<ModelType, 'id'>>): Promise<void>
 }

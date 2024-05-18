@@ -20,7 +20,7 @@ export abstract class DatabaseModel<ModelType> extends Model<ModelType> {
         return rowInserted
     }
 
-    public async update(data: Partial<ModelType>): Promise<void> {
-        await supabase.from(this.tableName).update(data)
+    public async update(userId: string, data: Partial<Omit<ModelType, "id">>): Promise<void> {
+        await supabase.from(this.tableName).update(data).eq('userId', userId)
     }
 }

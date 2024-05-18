@@ -23,7 +23,7 @@ export abstract class StorageModel extends Model<StorageData> {
         throw new Error('not implemented yet')
     }
 
-    public update(data: Partial<StorageData>): Promise<void> {
+    public update(id: string, data: Partial<Omit<StorageData, "id">>): Promise<void> {
         throw new Error('not implemented yet')
     }
 }
