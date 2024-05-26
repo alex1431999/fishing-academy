@@ -11,9 +11,10 @@
 </template>
 <script setup lang="ts">
 import AppHeader from "~/components/header/AppHeader.vue";
-import {anonymousSignInWorkflow} from 'fishing-academy-database'
+import {anonymousSignInWorkflow, userSettingsModel} from 'fishing-academy-database'
 
 const appStore = useAppStore()
+const userStore = useUserStore()
 
 const {isLoading} = storeToRefs(appStore)
 
@@ -21,6 +22,7 @@ appStore.isLoading = true
 
 onMounted(async () => {
     await anonymousSignInWorkflow.execute()
+    userStore.userSettings = await userSettingsModel.get()
     appStore.isLoading = false
 })
 </script>

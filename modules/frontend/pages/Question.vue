@@ -1,6 +1,7 @@
 <template>
     <div class="question d-flex justify-center">
         <QuestionCard
+            v-if="questionSelected"
             :question="questionSelected"
             :choices="choicesForQuestion"
             :has-previous-question="hasPreviousQuestion"
@@ -15,9 +16,11 @@
 import {questionModel} from 'fishing-academy-database/src/model/models/question'
 import {choiceModel} from 'fishing-academy-database/src/model/models/choice'
 
+const userStore = useUserStore()
+
 // TODO at the moment we are fetching all questions and all choices, we probably want to filter
 // this down in the future to not load too much data into the frontend
-const questions = await questionModel.getAll()
+const questions = await questionModel.getAllByState(userStore.userSettings?.stateSelectedId || 1)
 const choices = await choiceModel.getAll()
 
 let questionIndex = ref<number>(0)
@@ -27,7 +30,7 @@ const questionSelected = computed(() => {
 })
 
 const choicesForQuestion = computed(() => {
-    return choices.filter(choice => choice.questionId === questionSelected.value.id)
+    return choices.filter(choice => choice.questionId === questionSelected.value?.id)
 })
 
 const hasPreviousQuestion = computed(() => {
