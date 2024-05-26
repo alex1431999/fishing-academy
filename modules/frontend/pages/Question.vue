@@ -15,13 +15,13 @@
 <script setup lang="ts">
 import {questionModel} from 'fishing-academy-database/src/model/models/question'
 import {choiceModel} from 'fishing-academy-database/src/model/models/choice'
+import _ from "lodash";
 
 const userStore = useUserStore()
 
-// TODO at the moment we are fetching all questions and all choices, we probably want to filter
-// this down in the future to not load too much data into the frontend
 const questions = await questionModel.getAllByState(userStore.userSettings?.stateSelectedId || 1)
-const choices = await choiceModel.getAll()
+const questionIds = _.map(questions, 'id')
+const choices = await choiceModel.getAllByQuestions(questionIds)
 
 let questionIndex = ref<number>(0)
 
